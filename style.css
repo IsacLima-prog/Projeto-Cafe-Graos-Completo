@@ -1,0 +1,1049 @@
+/* ==================================================
+   CAFÉ & GRÃOS — IDENTIDADE VISUAL
+   ================================================== */
+
+:root {
+    /* Paleta oficial */
+    --cor-marrom-cafe: #3d2417;
+    --cor-marrom-medio: #674f41;
+    --cor-creme: #faf2e6;
+    --cor-bege: #ebe2d7;
+    --cor-taupe: #97867a;
+
+    /* Cores de aplicação */
+    --fundo: var(--cor-creme);
+    --superficie: #ffffff;
+    --superficie-apoio: var(--cor-bege);
+    --texto: var(--cor-marrom-cafe);
+    --texto-suave: var(--cor-marrom-medio);
+    --borda: var(--cor-bege);
+    --borda-destaque: var(--cor-taupe);
+    --acao: var(--cor-marrom-cafe);
+    --acao-hover: var(--cor-marrom-medio);
+    --texto-botao: #ffffff;
+
+    /* Compatibilidade com os nomes anteriores */
+    --cafe-marca: var(--acao);
+    --cafe-creme: var(--fundo);
+    --cafe-texto-suave: var(--texto-suave);
+
+    /* Tipografia */
+    --fonte-principal: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --texto-pequeno: 0.85rem;
+    --texto-padrao: 0.95rem;
+    --texto-subtitulo: 1rem;
+    --titulo-card: 1.35rem;
+    --titulo-secao: 2rem;
+
+    /* Formas e espaçamentos */
+    --raio-botao: 6px;
+    --raio-imagem: 8px;
+    --raio-card: 12px;
+    --margem-lateral: clamp(20px, 2.2vw, 40px);
+    --espaco-grid: 30px;
+    --padding-card: 30px;
+
+    /* Efeitos */
+    --sombra-card: 0 4px 12px rgba(61, 36, 23, 0.04);
+    --transicao: 0.2s ease;
+}
+
+
+/* ==================================================
+   RESET E ESTILOS GERAIS
+   ================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-principal);
+    font-size: var(--texto-padrao);
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+summary {
+    cursor: pointer;
+}
+
+button {
+    color: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--texto);
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+h1,
+h2 {
+    font-size: var(--titulo-secao);
+    margin-bottom: 8px;
+}
+
+h3 {
+    font-size: var(--titulo-card);
+    margin-bottom: 6px;
+}
+
+p {
+    overflow-wrap: break-word;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:where(a, button, summary, input, select, textarea):focus-visible {
+    outline: 3px solid var(--borda-destaque);
+    outline-offset: 4px;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+
+/* ==================================================
+   ESTRUTURA — LARGURA TOTAL
+   ================================================== */
+
+.pagina-container {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: var(--fundo);
+}
+
+.container {
+    width: 100%;
+    min-width: 0;
+    margin-inline: auto;
+    padding-inline: var(--margem-lateral);
+}
+
+main,
+.conteudo-principal {
+    flex: 1;
+    min-width: 0;
+}
+
+.inicio,
+.cafes,
+.metodos,
+.sobre {
+    background-color: var(--fundo);
+    padding-block: 60px;
+}
+
+.subtitulo,
+.page-header p {
+    color: var(--texto-suave);
+    font-size: var(--texto-subtitulo);
+}
+
+.page-header {
+    margin-bottom: 35px;
+}
+
+
+/* ==================================================
+   CABEÇALHO
+   ================================================== */
+
+.navbar {
+    width: 100%;
+    background-color: var(--fundo);
+    border-bottom: 1px solid var(--borda-destaque);
+}
+
+/* Atende ao cabeçalho com ou sem uma div .topo */
+.navbar:not(:has(.topo)),
+.navbar .topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-block: 15px;
+}
+
+.navbar:not(:has(.topo)) {
+    padding-inline: var(--margem-lateral);
+}
+
+.navbar .topo {
+    width: 100%;
+    padding-inline: var(--margem-lateral);
+}
+
+.logo-container,
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-icon,
+.logo-circle {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--borda-destaque);
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+.logo-icon {
+    background-image: url("img/logo.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-icon img,
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo-text,
+.brand-name {
+    color: var(--texto);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a,
+.nav-item {
+    color: var(--texto-suave);
+    font-size: var(--texto-padrao);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+.nav-links a:hover,
+.nav-links a.active,
+.nav-links .nav-item-active,
+.nav-links .nav-item-activte,
+.nav-item.active {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.botoes-topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-name,
+.nav-user {
+    padding: 6px 12px;
+    border-radius: var(--raio-botao);
+    background-color: var(--superficie-apoio);
+    color: var(--texto);
+    font-size: var(--texto-padrao);
+    font-weight: 600;
+}
+
+
+/* ==================================================
+   BOTÕES
+   ================================================== */
+
+.botao,
+.botao-card,
+.btn-primary,
+.btn-secondary,
+.btn-sair,
+.btn-tema,
+.entrar,
+.modo-visualizacao button,
+.controles button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 12px 18px;
+    border: 1px solid transparent;
+    border-radius: var(--raio-botao);
+    font-size: var(--texto-padrao);
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color var(--transicao),
+        color var(--transicao),
+        border-color var(--transicao);
+}
+
+.botao,
+.botao-card,
+.btn-primary,
+.controles button {
+    background-color: var(--acao);
+    color: var(--texto-botao);
+}
+
+.botao:hover,
+.botao-card:hover,
+.btn-primary:hover,
+.controles button:hover:not(:disabled) {
+    background-color: var(--acao-hover);
+    text-decoration: none;
+}
+
+.btn-secondary,
+.entrar,
+.modo-visualizacao button {
+    border-color: var(--acao);
+    background-color: transparent;
+    color: var(--acao);
+}
+
+.btn-secondary:hover,
+.entrar:hover,
+.modo-visualizacao button:hover,
+.modo-visualizacao button[aria-pressed="true"] {
+    background-color: var(--acao);
+    color: var(--texto-botao);
+}
+
+.btn-sair,
+.btn-tema {
+    padding: 6px 16px;
+    border-color: var(--borda-destaque);
+    background-color: transparent;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-sair:hover,
+.btn-tema:hover {
+    border-color: var(--acao);
+    background-color: var(--superficie-apoio);
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.btn-tema {
+    white-space: nowrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.botao-card {
+    width: 100%;
+}
+
+
+/* ==================================================
+   INÍCIO
+   ================================================== */
+
+.inicio-conteudo,
+.sobre-conteudo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 55px;
+}
+
+.inicio-texto,
+.sobre-texto {
+    min-width: 0;
+}
+
+.inicio-texto p {
+    max-width: 55ch;
+    margin-bottom: 25px;
+    color: var(--texto-suave);
+    font-size: var(--texto-subtitulo);
+}
+
+.imagem-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.imagem {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: var(--raio-card);
+    box-shadow: var(--sombra-card);
+}
+
+
+/* ==================================================
+   CATÁLOGO DE CAFÉS
+   ================================================== */
+
+.cafes .subtitulo {
+    max-width: 65ch;
+    margin-bottom: 30px;
+}
+
+.cabecalho-cafes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px 24px;
+}
+
+.modo-visualizacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+/* Carrossel: três cards visíveis no computador */
+.cafes .grade-cafes {
+    --colunas: 3;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-template-rows: auto;
+    grid-auto-columns: calc(
+        (100% - (var(--colunas) - 1) * var(--espaco-grid))
+        / var(--colunas)
+    );
+    align-items: start;
+    gap: var(--espaco-grid);
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    padding-block: 4px 16px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.cafes .grade-cafes::-webkit-scrollbar {
+    display: none;
+}
+
+/* Lista: três cards por linha no computador */
+.cafes .grade-cafes.lista {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(
+        var(--colunas),
+        minmax(0, 1fr)
+    );
+    overflow: visible;
+    scroll-snap-type: none;
+}
+
+.cafes .card-cafe {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: var(--padding-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-card);
+    background-color: var(--superficie);
+    color: var(--texto);
+    box-shadow: var(--sombra-card);
+    scroll-snap-align: start;
+}
+
+.cafes .foto-cafe {
+    height: clamp(170px, 13vw, 280px);
+    flex-shrink: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: var(--raio-imagem);
+    background-color: var(--superficie-apoio);
+}
+
+.cafes .imagemc,
+.cafes .foto-cafe img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cafes .card-cafe h2,
+.cafes .card-cafe h3 {
+    margin: 0 0 10px;
+    font-size: var(--titulo-card);
+}
+
+.cafes .card-cafe p {
+    margin-bottom: 20px;
+    color: var(--texto-suave);
+    font-size: var(--texto-padrao);
+}
+
+.cafes .card-cafe > .botao-card {
+    margin-top: auto;
+}
+
+
+/* ==================================================
+   DETALHES EXPANSÍVEIS
+   ================================================== */
+
+.cafes .detalhes-cafe {
+    margin-top: 6px;
+}
+
+.cafes .detalhes-cafe > summary {
+    width: 100%;
+    margin: 0;
+    list-style: none;
+}
+
+.cafes .detalhes-cafe > summary::-webkit-details-marker {
+    display: none;
+}
+
+.cafes .detalhes-cafe > summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 1.1rem;
+}
+
+.cafes .detalhes-cafe[open] > summary::after {
+    content: "−";
+}
+
+.cafes .detalhes-cafe .descricao-cafe {
+    margin: 16px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--borda);
+    color: var(--texto-suave);
+    font-size: var(--texto-padrao);
+}
+
+
+/* ==================================================
+   SETAS DO CARROSSEL
+   ================================================== */
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.controles button {
+    min-width: 44px;
+    padding: 10px 16px;
+}
+
+
+/* ==================================================
+   MÉTODOS DE PREPARO
+   ================================================== */
+
+.grade-metodos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espaco-grid);
+    margin-top: 30px;
+}
+
+.grade-metodos > :is(
+    .metodo,
+    .metodo1,
+    .metodo2,
+    .metodo3,
+    .metodo4,
+    .metodo5,
+    .metodo6
+) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    min-width: 0;
+    padding: var(--padding-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-card);
+    background-color: var(--superficie);
+    color: var(--texto);
+    box-shadow: var(--sombra-card);
+}
+
+.grade-metodos h3 {
+    margin-bottom: 6px;
+    font-size: var(--titulo-card);
+}
+
+.grade-metodos p {
+    color: var(--texto-suave);
+    font-size: var(--texto-padrao);
+}
+
+.grade-metodos img,
+.coador,
+.prensa,
+.espresso {
+    width: 100%;
+    height: auto;
+    border-radius: var(--raio-imagem);
+}
+
+.grade-metodos .botao-card {
+    margin-top: auto;
+}
+
+
+/* ==================================================
+   SOBRE
+   ================================================== */
+
+.sobre-texto p {
+    margin-top: 15px;
+    color: var(--texto-suave);
+    font-size: var(--texto-padrao);
+}
+
+.imagem-sobre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-card);
+    background-color: var(--superficie-apoio);
+    color: var(--texto-suave);
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ==================================================
+   RODAPÉ
+   ================================================== */
+
+footer,
+.footer {
+    margin-top: auto;
+    padding-top: 25px;
+    border-top: 1px solid var(--borda-destaque);
+    background-color: var(--fundo);
+    color: var(--texto-suave);
+}
+
+.rodape {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.rodape h3 {
+    margin-bottom: 10px;
+    color: var(--texto);
+    font-size: 1rem;
+}
+
+.rodape p {
+    margin-bottom: 4px;
+    font-size: var(--texto-pequeno);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 0 var(--margem-lateral) 25px;
+    font-size: var(--texto-pequeno);
+}
+
+.direitos {
+    margin: 25px var(--margem-lateral) 0;
+    padding-block: 18px;
+    border-top: 1px solid var(--borda);
+    color: var(--texto-suave);
+    font-size: var(--texto-pequeno);
+    text-align: center;
+}
+
+.wireframe-tag {
+    font-family: monospace;
+}
+
+
+/* ==================================================
+   TEMA ESCURO — TONS DA MARCA
+   ================================================== */
+
+body.tema-escuro {
+    color-scheme: dark;
+
+    --fundo: #211914;
+    --superficie: #30251e;
+    --superficie-apoio: #3b2e25;
+    --texto: #faf2e6;
+    --texto-suave: #d2c2b3;
+    --borda: #514034;
+    --borda-destaque: #97867a;
+    --acao: #ebe2d7;
+    --acao-hover: #d7c7b7;
+    --texto-botao: #3d2417;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+    :root {
+        --espaco-grid: 24px;
+        --padding-card: 24px;
+    }
+
+    .inicio-conteudo,
+    .sobre-conteudo {
+        gap: 30px;
+    }
+
+    .cafes .grade-cafes {
+        --colunas: 2;
+    }
+
+    .grade-metodos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ==================================================
+   CELULAR
+   ================================================== */
+
+@media (max-width: 600px) {
+    :root {
+        --margem-lateral: 20px;
+        --espaco-grid: 20px;
+        --padding-card: 20px;
+        --titulo-secao: 1.75rem;
+    }
+
+    .navbar:not(:has(.topo)),
+    .navbar .topo {
+        gap: 16px;
+    }
+
+    .logo-text,
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        order: 1;
+        width: 100%;
+        gap: 12px 18px;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .botoes-topo {
+        gap: 8px;
+    }
+
+    .inicio,
+    .cafes,
+    .metodos,
+    .sobre {
+        padding-block: 40px;
+    }
+
+    .inicio-conteudo,
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cafes .grade-cafes {
+        --colunas: 1;
+    }
+
+    .cafes .foto-cafe {
+        height: 200px;
+    }
+
+    .modo-visualizacao {
+        justify-content: flex-start;
+    }
+
+    .grade-metodos {
+        grid-template-columns: 1fr;
+    }
+
+    .rodape,
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* ==================================================
+   ACESSIBILIDADE — MOVIMENTO REDUZIDO
+   ================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transicao: 0s;
+    }
+
+    .cafes .grade-cafes {
+        scroll-behavior: auto;
+    }
+}
+
+/* Galerias independentes: uma para cada café */
+.logo-imagem { flex-shrink: 0; object-fit: contain; border-radius: 50%; }
+.cafes .galeria-cafe {
+    position: relative;
+    height: clamp(240px, 24vw, 360px);
+    isolation: isolate;
+}
+.cafes .galeria-cafe .foto-produto { object-fit: cover; }
+.cafes .galeria-cafe .foto-barista {
+    object-fit: contain;
+    background-color: var(--superficie-apoio);
+}
+.cafes .galeria-cafe .seta-foto {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-botao);
+    background-color: var(--superficie);
+    color: var(--texto);
+    font-size: 28px;
+    line-height: 1;
+    transform: translateY(-50%);
+    box-shadow: var(--sombra-card);
+    transition: background-color var(--transicao), color var(--transicao);
+}
+.cafes .galeria-cafe .seta-foto:hover {
+    background-color: var(--acao);
+    color: var(--texto-botao);
+}
+.cafes .galeria-cafe .seta-foto-anterior { left: 10px; }
+.cafes .galeria-cafe .seta-foto-proxima { right: 10px; }
+.cafes .galeria-cafe .contador-fotos {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    padding: 3px 10px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-botao);
+    background-color: var(--superficie);
+    color: var(--texto);
+    font-size: 12px;
+    font-weight: 600;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+@media (max-width: 600px) {
+    .cafes .galeria-cafe { height: 300px; }
+}
+
+
+/* Métodos de preparo — carrossel independente */
+.metodos .grade-metodos {
+    --colunas-metodos: 3;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-template-rows: auto;
+    grid-auto-columns: calc(
+        (100% - (var(--colunas-metodos) - 1) * var(--espaco-grid))
+        / var(--colunas-metodos)
+    );
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+    gap: var(--espaco-grid);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--borda-destaque) var(--fundo);
+    padding-block: 4px 16px;
+}
+.metodos .grade-metodos > .metodo {
+    min-width: 0;
+    padding: 16px;
+    gap: 0;
+    scroll-snap-align: start;
+}
+.metodos .grade-metodos .metodo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+    border-radius: var(--raio-imagem);
+}
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+@media (max-width: 900px) {
+    .metodos .grade-metodos { --colunas-metodos: 2; }
+}
+@media (max-width: 600px) {
+    .metodos .grade-metodos { --colunas-metodos: 1; }
+}
+
+
+/* Navbar de ponta a ponta; conteúdo limitado a 1200px */
+.pagina-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar,
+.navbar .topo {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+}
+main,
+.conteudo-principal,
+footer,
+.footer {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--margem-lateral);
+}
+
+/* Barra de acessibilidade lateral */
+.barra-acessibilidade {
+    position: fixed;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+.barra-acessibilidade button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background-color: var(--cor-marrom-cafe);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+}
